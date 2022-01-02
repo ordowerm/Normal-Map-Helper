@@ -1,0 +1,34 @@
+I'm trying to add normal maps to some video game sprites I'm making.
+This tiny lil app will help me interpolate between colors.
+
+Normally I'd write this in C++, but I wanted to see if I still know some old-school C.
+Libraries for this already exist, but I'm writing my own stuff just for practice.
+
+
+
+---------------------------
+Usage:
+  In your Unix/Posix shell, run the command:
+      $ make main
+  This compiles to a binary/executable file called "a.out", located in the same directory as the makefile.
+  You can then just run the command:
+    $ ./a.out
+  This will execute the program.
+
+  The command:
+    $ make clean
+  will remove the compiled binary.
+
+  Note: the binary contains debugging info, in case you want to use GDB or something.
+
+
+----------------------------
+UPDATE 1/2/2022:
+TO-DO:
+  - Unit testing for color interpolation
+  - Create UI / Menu System
+  
+  -- Possible future features:
+      (1.) Parse PNG files
+      (2.) Programmatically generate normal maps from PNG RGBA values
+      (3.) Save normal maps as PNG files
