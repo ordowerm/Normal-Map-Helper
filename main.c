@@ -42,6 +42,7 @@ void TestFunc2()
   SetMenuDescription(m2,"This is a description for a non-root child.");
   SetMenuCallback(m2,&TestCallback);
   AddLinkedMenu(m,m2);
+  
 
   RunMenu(m,1);
   DeleteMenu(m);
