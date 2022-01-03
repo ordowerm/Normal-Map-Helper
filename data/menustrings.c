@@ -17,3 +17,4 @@ const char* exitTitle = "Exit program\n";
 const char* returnTitle = "Return to previous menu\n";
 const char* inputPrompt = "Type the desired number:";
 const char* numberInvalidMsg = "Invalid number selected. Please choose a number between ";
+const char* sectionBreak = "\n\n";

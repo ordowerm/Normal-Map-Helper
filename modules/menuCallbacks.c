@@ -5,10 +5,16 @@ void EndMenu(int isRoot)
 {
   if (isRoot)
   {
-    printf("%s",returnMessageRoot);
+    printf("%s%s",returnMessageRoot,sectionBreak);
   }
   else
   {
-    printf("%s",returnMessageNode);
+    printf("%s%s",returnMessageNode,sectionBreak);
   }
+}
+
+
+void TestCallback()
+{
+  printf("\n%s\n","I'm a test callback!\n");
 }

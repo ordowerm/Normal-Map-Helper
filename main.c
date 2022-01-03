@@ -31,6 +31,18 @@ void TestFunc2()
   Menu* m = MenuInit();
   SetMenuTitle(m,"Test Menu");
   SetMenuDescription(m,"This is a description for a test menu. I hope you like it.\nYou can tell me that you like it at my email address.\n");
+
+  Menu* m1 = MenuInit();
+  SetMenuTitle(m1,"Child Menu 1");
+  SetMenuDescription(m1,"This is a description for a non-root child.");
+  AddLinkedMenu(m,m1);
+
+  Menu* m2 = MenuInit();
+  SetMenuTitle(m2,"Child Menu 2");
+  SetMenuDescription(m2,"This is a description for a non-root child.");
+  SetMenuCallback(m2,&TestCallback);
+  AddLinkedMenu(m,m2);
+
   RunMenu(m,1);
   DeleteMenu(m);
 }

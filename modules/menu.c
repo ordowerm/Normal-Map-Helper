@@ -65,7 +65,7 @@ int GetOptionNumber(Menu* m)
       break;
     }
   }
-
+  printf("%s",sectionBreak);
   return selection-1; //offset by one to account for zero-indexing
 }
 

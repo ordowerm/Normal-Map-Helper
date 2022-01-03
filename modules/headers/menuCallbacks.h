@@ -9,3 +9,4 @@
 #endif
 
 void EndMenu(int isRoot);
+void TestCallback();
