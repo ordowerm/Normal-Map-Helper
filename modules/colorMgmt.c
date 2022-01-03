@@ -78,3 +78,15 @@ Color Lerp(Color* c0, Color* c1, float t)
     float b = LerpComponent(c0->b,c1->b,t);
     return MakeColor(r,g,b);
 }
+
+//Passes hex values into color
+void HexToFloat(Color* c, int r, int g, int b)
+{
+  if (!c) return;
+
+  c->r = ((float)r)/255.0f;
+  c->g = ((float)g)/255.0f;
+  c->b = ((float)b)/255.0f;
+
+
+}

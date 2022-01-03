@@ -16,10 +16,16 @@ Idea:
 #define MENUS
 
 #include <string.h>
+#include <stdio.h>
+
+#define TITLE_BUFFER_SIZE 32
+#define DESCRIPTION_BUFFER_SIZE 280
+#define MAX_OPTIONS 8
+#define USER_BUFFER_SIZE 8
+
 
 typedef struct MENU
 {
-  int active; //boolean flag for use in the menu callback function's while-loop
   struct MENU** linkedMenus; //list of linked menus
   int num_linked; //number of linked menus --> use this to define which numeric inputs are valid when asking user for input
   char* title; //title of this menu to be displayed in previous menu
@@ -27,9 +33,14 @@ typedef struct MENU
   void* callback; //function pointer for payload of this function
 } Menu;
 
-void RunMenu(Menu* m); //forward declaration for standard menu function
+Menu* MenuInit();
+int GetOptionNumber(Menu* menu); //helper function for obtaining user input
+void RunMenu(Menu* m, int isRoot); //forward declaration for standard menu function; the isRoot field is a flag denoting that the current menu is the root/main menu
 void SetMenuCallback(Menu* menu, void* funcPointer){ if(menu) menu->callback = funcPointer;} //for specifc menu callbacks, pass a function pointer to the struct
 void AddLinkedMenu(Menu* src, Menu* linked); //dynamically add a menu
-void SetLinkedMenus(Menu* src, Menu** linked);  //sets the entire field for the linked menus
 void SetMenuTitle(Menu* m, const char* s);
 void SetMenuDescription(Menu* m, const char* s);
+void DeleteMenu(Menu* m);
+
+//Exception handlers -- wrappers that print text in menustrings.c
+void PrintBufferError();

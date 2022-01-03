@@ -21,13 +21,21 @@ Usage:
 
   Note: the binary contains debugging info, in case you want to use GDB or something.
 
+  ----------------------------
+
+Design considerations:
+  - I separated headers from the code body for the purposes of forward declaration. I don't know if it's common practice in C, but it's definitely common in C++.
+  - Sometimes I didn't include helper functions in the header files, since they don't need to be called in other modules.
+  - I tried to implement some separation of concerns by storing string literals in a separate file, as global variables. If I want to change them, I just modify them in menustrings.c, instead of having to go to the actual function calls.
+
 
 ----------------------------
-UPDATE 1/2/2022:
+UPDATE 1/3/2022:
 TO-DO:
-  - Unit testing for color interpolation
-  - Create UI / Menu System
-  
+  - Unit testing
+  - Implement menus and interpolators
+  - Migrate testing suite to unittests.c --> might delay this, since best practices would tell me to add a bunch of preprocessor directives
+
   -- Possible future features:
       (1.) Parse PNG files
       (2.) Programmatically generate normal maps from PNG RGBA values

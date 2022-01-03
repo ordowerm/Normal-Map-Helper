@@ -25,6 +25,7 @@ Color MakeColor(float r, float g, float b); //sets rgb values and returns the ne
 void PrintHex(Color* c); //prints hex code for color
 Color Lerp(Color* c0, Color* c1, float t); //linearly interpolates between two colors
 void PrintFloat(Color* c);
+void HexToFloat(Color* c, int r, int g, int b);
 
 
 //Color constants corresponding to compass directions

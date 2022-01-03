@@ -25,8 +25,18 @@ void TestFunc1()
     PrintHex(&result);
 }
 
+
+void TestFunc2()
+{
+  Menu* m = MenuInit();
+  SetMenuTitle(m,"Test Menu");
+  SetMenuDescription(m,"This is a description for a test menu. I hope you like it.\nYou can tell me that you like it at my email address.\n");
+  RunMenu(m,1);
+  DeleteMenu(m);
+}
+
 int main (int argc, char** argv)
 {
-  TestFunc1();
+  TestFunc2();
   return 0;
 }
