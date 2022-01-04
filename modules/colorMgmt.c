@@ -3,6 +3,7 @@
 #endif
 
 #include <stdio.h>
+#include <string.h>
 
 
 extern int debug;
@@ -89,4 +90,67 @@ void HexToFloat(Color* c, int r, int g, int b)
   c->b = ((float)b)/255.0f;
 
 
+}
+
+//Returns whether two colors are equal
+int CEquals(Color a, Color b)
+{
+  return ((a.r == b.r) && (a.g == b.g) && (a.b==b.b));
+}
+
+//Obtain color associated with a normal map constant color from string input
+Color GetCardinal(char* input)
+{
+  //Check if north
+  int flag = (
+    (strcmp(input,"N") == 0) ||
+    (strcmp(input,"n") == 0) ||
+    (strcmp(input,"north")==0) ||
+    (strcmp(input,"NORTH")==0) ||
+    (strcmp(input,"North")==0)
+  );
+  if (flag) {return north;}
+
+  //Check if south
+  flag = (
+    (strcmp(input,"S") == 0) ||
+    (strcmp(input,"s") == 0) ||
+    (strcmp(input,"south")==0) ||
+    (strcmp(input,"SOUTH")==0) ||
+    (strcmp(input,"South")==0)
+  );
+  if (flag) {return south;}
+
+  //East
+  flag = (
+    (strcmp(input,"E") == 0) ||
+    (strcmp(input,"e") == 0) ||
+    (strcmp(input,"east")==0) ||
+    (strcmp(input,"EAST")==0) ||
+    (strcmp(input,"East")==0)
+  );
+  if (flag) {return east;}
+
+  //West
+  flag = (
+    (strcmp(input,"W") == 0) ||
+    (strcmp(input,"w") == 0) ||
+    (strcmp(input,"west")==0) ||
+    (strcmp(input,"WEST")==0) ||
+    (strcmp(input,"West")==0)
+  );
+  if (flag) {return west;}
+
+  //Straight
+  flag = (
+    (strcmp(input,"straight") == 0) ||
+    (strcmp(input,"str8") == 0) ||
+    (strcmp(input,"STR8")==0) ||
+    (strcmp(input,"STRAIGHT")==0) ||
+    (strcmp(input,"Straight")==0)
+  );
+  if (flag) {return straight;}
+
+  //Return black otherwise
+  return MakeColor(0,0,0);
 }

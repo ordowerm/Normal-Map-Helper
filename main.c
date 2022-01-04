@@ -42,14 +42,38 @@ void TestFunc2()
   SetMenuDescription(m2,"This is a description for a non-root child.");
   SetMenuCallback(m2,&TestCallback);
   AddLinkedMenu(m,m2);
-  
 
-  RunMenu(m,1);
+
+  RunMenu(m,1,NULL,NULL,NULL);
+  DeleteMenu(m);
+}
+
+
+void TestCardinal()
+{
+  Menu* m = MenuInit();
+  SetMenuTitle(m,"Test Menu");
+  SetMenuDescription(m,"This is a description for a test menu. I hope you like it.\nYou can tell me that you like it at my email address.\n");
+
+  Menu* m1 = MenuInit();
+  SetMenuTitle(m1,"Get Cardinal Color");
+  SetMenuDescription(m1,"Input a cardinal direction or the word \'Straight\' to return the color associated with it in a normal map.\n");
+  AddLinkedMenu(m,m1);
+  SetMenuCallback(m1,&GetCardinalCallback);
+
+
+  Menu* m2 = MenuInit();
+  SetMenuTitle(m2,"Child Menu 2");
+  SetMenuDescription(m2,"This is a description for a non-root child.");
+  SetMenuCallback(m2,&TestCallback);
+  AddLinkedMenu(m,m2);
+
+  RunMenu(m,1,NULL,NULL,NULL);
   DeleteMenu(m);
 }
 
 int main (int argc, char** argv)
 {
-  TestFunc2();
+  TestCardinal();
   return 0;
 }

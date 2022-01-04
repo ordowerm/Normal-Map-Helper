@@ -16,7 +16,6 @@ typedef struct color
 const char* redLabel = "Red: ";
 const char* blueLabel = "Blue: ";
 const char* greenLabel = "Green: ";
-const char* alphaLabel = "Alpha: ";
 
 
 //Functions
@@ -34,3 +33,12 @@ const Color south = {0.5,0,0.5};
 const Color east = {1,0.5,0.5};
 const Color west = {0,0.5,0.5};
 const Color straight = {0.5,0.5,1};
+
+//Other color constants
+const Color black = {0,0,0};
+const Color white = {1,1,1};
+
+
+Color GetCardinal(char* input);
+
+int CEquals(Color a, Color b); //returns whether two colors are equal

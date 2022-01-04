@@ -46,10 +46,13 @@ Menu* MenuInit()
 int GetOptionNumber(Menu* m)
 {
   long int selection = 0;
+
   char buffer[USER_BUFFER_SIZE];
   printf("\n%s\n",inputPrompt);
   while (1)
   {
+
+
     //Get user input
     if(fgets(buffer, USER_BUFFER_SIZE, stdin))
     {
@@ -70,12 +73,14 @@ int GetOptionNumber(Menu* m)
 }
 
 //Default menu behavior handling input loop
-void RunMenu(Menu* m, int isRoot)
+void RunMenu(Menu* m, int isRoot, Color* color1, Color* color2, Color* outColor)
 {
   if (!m) return;
   int active = 1;
   while(active)
   {
+
+
     printf("%s",menuBorder);
     printf("%s:\n\n", m->title);
     printf("%s\n", m->description);
@@ -112,13 +117,15 @@ void RunMenu(Menu* m, int isRoot)
       //If the callback is defined, call it.
       if (m->linkedMenus[selection]->callback)
       {
-        void (*callback)() = (m->linkedMenus[selection]->callback);
-        (*callback)();
+        Menu* linked = m->linkedMenus[selection];
+        void (*callback)(Menu*,Color*,Color*,Color*) = (linked->callback);
+        callback(linked,color1,color2,outColor);
       }
       //If it's not defined, call the regular RunMenu function
       else
       {
-        RunMenu(m->linkedMenus[selection],0);
+        RunMenu(m->linkedMenus[selection],0, color1, color2, outColor);
+        
       }
     }
   }
