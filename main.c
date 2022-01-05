@@ -8,6 +8,8 @@
 #include "./modules/menu.c"
 #endif
 
+#include "./modules/pngutils.c"
+
 int debug = 1; //global debug variable, marked extern in module files
 
 void TestFunc0()
@@ -28,6 +30,8 @@ void TestFunc1()
 
 void TestFunc2()
 {
+
+
   Menu* m = MenuInit();
   SetMenuTitle(m,"Test Menu");
   SetMenuDescription(m,"This is a description for a test menu. I hope you like it.\nYou can tell me that you like it at my email address.\n");
@@ -72,8 +76,15 @@ void TestCardinal()
   DeleteMenu(m);
 }
 
+void TestFileRead()
+{
+  printf("Printing data from shroomba.png:\n");
+  PrintPngAsAscii("./data/png/shroomba.png");
+
+}
+
 int main (int argc, char** argv)
 {
-  TestCardinal();
+  TestFileRead();
   return 0;
 }
